@@ -3,7 +3,7 @@ option(RTNEURAL_TEST_REPORTS "Output test reports to XML files" OFF)
 macro(rtneural_setup_testing)
     include(CTest)
     enable_testing()
-    add_custom_target(rtneural_test COMMAND ctest -C ${Configuration} --output-on-failure)
+    add_custom_target(rtneural_test COMMAND ctest --output-on-failure)
     CPMAddPackage("gh:google/googletest@1.14.0")
 endmacro()
 
