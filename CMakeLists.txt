@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 project(RTNeural VERSION 1.0.0)
 include(cmake/CXXStandard.cmake)
+include(cmake/RADSan.cmake)
 
 add_subdirectory(RTNeural)
 
@@ -26,4 +27,8 @@ option(BUILD_EXAMPLES "Build RTNeural examples" OFF)
 if(BUILD_EXAMPLES)
     message(STATUS "RTNeural -- Configuring examples...")
     add_subdirectory(examples)
+endif()
+
+if(RTNEURAL_ENABLE_RADSAN)
+    rtneural_radsan_configure(RTNeural)
 endif()
