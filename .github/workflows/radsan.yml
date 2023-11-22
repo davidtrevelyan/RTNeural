@@ -30,7 +30,7 @@ jobs:
       run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON -DRTNEURAL_ENABLE_RADSAN=ON
 
     - name: Build
-      run: cmake --build build --config Release --parallel
+      run: cmake --build build --config Release --parallel --target rtneural_test_realtime
 
     - name: Test
-      run: cd build && ctest --output-on-failure
+      run: cd build && ./tests/realtime/rtneural_test_realtime

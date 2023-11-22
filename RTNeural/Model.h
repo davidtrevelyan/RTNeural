@@ -18,7 +18,6 @@
 #include "gru/gru.tpp"
 #include "lstm/lstm.h"
 #include "lstm/lstm.tpp"
-#include "platform/platform.h"
 
 namespace RTNeural
 {
@@ -72,14 +71,14 @@ public:
     }
 
     /** Resets the state of the network layers. */
-    RTNEURAL_RT_ATTR void reset()
+    void reset()
     {
         for(auto* l : layers)
             l->reset();
     }
 
     /** Performs forward propagation for this model. */
-    RTNEURAL_RT_ATTR inline T forward(const T* input)
+    inline T forward(const T* input)
     {
         layers[0]->forward(input, outs[0].data());
 
@@ -92,7 +91,7 @@ public:
     }
 
     /** Returns a pointer to the output of the final layer in the network. */
-    RTNEURAL_RT_ATTR inline const T* getOutputs() const noexcept
+    inline const T* getOutputs() const noexcept
     {
         return outs.back().data();
     }

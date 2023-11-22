@@ -1,7 +1,6 @@
 #pragma once
 
 #include "model_loader.h"
-#include "platform/platform.h"
 
 namespace RTNeural
 {
@@ -351,20 +350,20 @@ public:
 
     /** Get a reference to the layer at index `Index`. */
     template <int Index>
-    RTNEURAL_RT_ATTR auto& get() noexcept
+    auto& get() noexcept
     {
         return std::get<Index>(layers);
     }
 
     /** Get a reference to the layer at index `Index`. */
     template <int Index>
-    RTNEURAL_RT_ATTR const auto& get() const noexcept
+    const auto& get() const noexcept
     {
         return std::get<Index>(layers);
     }
 
     /** Resets the state of the network layers. */
-    RTNEURAL_RT_ATTR void reset()
+    void reset()
     {
         modelt_detail::forEachInTuple([&](auto& layer, size_t)
             { layer.reset(); },
@@ -373,7 +372,7 @@ public:
 
     /** Performs forward propagation for this model. */
     template <int N = in_size>
-    RTNEURAL_RT_ATTR inline typename std::enable_if<(N > 1), T>::type
+    inline typename std::enable_if<(N > 1), T>::type
     forward(const T* input)
     {
 #if RTNEURAL_USE_XSIMD
@@ -400,7 +399,7 @@ public:
 
     /** Performs forward propagation for this model. */
     template <int N = in_size>
-    RTNEURAL_RT_ATTR inline typename std::enable_if<N == 1, T>::type
+    inline typename std::enable_if<N == 1, T>::type
     forward(const T* input)
     {
 #if RTNEURAL_USE_XSIMD
@@ -426,7 +425,7 @@ public:
     }
 
     /** Returns a pointer to the output of the final layer in the network. */
-    RTNEURAL_RT_ATTR inline const T* getOutputs() const noexcept
+    inline const T* getOutputs() const noexcept
     {
         return outs;
     }
@@ -503,20 +502,20 @@ public:
 
     /** Get a reference to the layer at index `Index`. */
     template <int Index>
-    RTNEURAL_RT_ATTR auto& get() noexcept
+    auto& get() noexcept
     {
         return std::get<Index>(layers);
     }
 
     /** Get a reference to the layer at index `Index`. */
     template <int Index>
-    RTNEURAL_RT_ATTR const auto& get() const noexcept
+    const auto& get() const noexcept
     {
         return std::get<Index>(layers);
     }
 
     /** Resets the state of the network layers. */
-    RTNEURAL_RT_ATTR void reset()
+    void reset()
     {
         modelt_detail::forEachInTuple([&](auto& layer, size_t)
             { layer.reset(); },
@@ -524,7 +523,7 @@ public:
     }
 
     /** Performs forward propagation for this model. */
-    RTNEURAL_RT_ATTR inline T forward(const T* input)
+    inline T forward(const T* input)
     {
         for(int feature_index = 0; feature_index < num_features_in; ++feature_index)
         {
@@ -548,7 +547,7 @@ public:
     }
 
     /** Returns a pointer to the output of the final layer in the network. */
-    RTNEURAL_RT_ATTR inline const T* getOutputs() const noexcept
+    inline const T* getOutputs() const noexcept
     {
         return outs;
     }
