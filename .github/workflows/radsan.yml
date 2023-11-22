@@ -1,14 +1,15 @@
 name: RADSan Real-Time Safety
 
-on:
-  push:
-    branches:
-    - main
-    - develop
-  pull_request:
-    branches:
-    - main
-    - develop
+on: [push]
+#on:
+#  push:
+#    branches:
+#    - main
+#    - develop
+#  pull_request:
+#    branches:
+#    - main
+#    - develop
 
 jobs:
   build_and_test:
