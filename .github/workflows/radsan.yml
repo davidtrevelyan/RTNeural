@@ -29,6 +29,9 @@ jobs:
     - name: Configure
       run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=ON -DRTNEURAL_ENABLE_RADSAN=ON
 
+    - name: Build
+      run: cmake --build build --config Release --parallel
+
     - name: Test
       run: ctest -C Release --test-dir build --parallel --output-on-failure
 
