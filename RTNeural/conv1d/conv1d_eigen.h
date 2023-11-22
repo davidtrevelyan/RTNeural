@@ -3,6 +3,7 @@
 
 #include "../Layer.h"
 #include <Eigen/Dense>
+#include <iostream>
 
 namespace RTNeural
 {
@@ -44,6 +45,8 @@ public:
     /** Performs forward propagation for this layer. */
     inline void forward(const T* input, T* h) noexcept override
     {
+        std::cout << "oops!" << std::endl;
+
         // insert input into a circular buffer
         state.col(state_ptr) = Eigen::Map<const Eigen::Vector<T, Eigen::Dynamic>,
             RTNeuralEigenAlignment>(input, Layer<T>::in_size);
