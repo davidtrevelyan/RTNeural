@@ -4,6 +4,8 @@
 #include "../common.h"
 #include "../maths/maths_eigen.h"
 
+#include <iostream>
+
 namespace RTNeural
 {
 
@@ -28,6 +30,8 @@ public:
     /** Performs forward propagation for tanh activation. */
     inline void forward(const T* input, T* out) noexcept override
     {
+        std::cout << "oops!" << std::endl;
+
         inVec = Eigen::Map<const Eigen::Matrix<T, Eigen::Dynamic, 1>, RTNeuralEigenAlignment>(
             input, Layer<T>::in_size, 1);
         outVec = MathsProvider::tanh(inVec);
